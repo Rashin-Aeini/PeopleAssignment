@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Show all people";
+}
+
+<div class="container-fluid">
+
+    <div class="form-inline">
+        <label class="ml-auto" for="id">Id</label>
+        <input type="text" class="form-control mb-2 mx-sm-2" id="id">
+
+        <button type="submit" id="people" class="btn btn-primary mb-2 mr-3">People</button>
+        <button type="submit" id="details" class="btn btn-secondary mb-2 mr-3">Details</button>
+        <button type="submit" id="delete" class="btn btn-danger mb-2">Delete</button>
+    </div>
+
+
+    <div class="row" id="show">
+    </div>
+</div>
+
+<div class="modal" id="details-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Person Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $('#people').click(function () {
+                $.get('@Url.Action("Fetch")')
+                    .done(function (response) {
+                        $('#show').html(response);
+                    });
+            });
+
+            $('#details').click(function () {
+                $.post('@Url.Action("Details")', { Id: $('#id').val() })
+                    .done(function (response) {
+                        $('#details-modal .modal-body').html(response);
+                        $('#details-modal').modal('show');
+                    });
+            });
+
+            $('#delete').click(function () {
+                $.post('@Url.Action("Delete")', { Id: $('#id').val() })
+                    .done(function () {
+                        $('#people').trigger('click');
+                    });
+            });
+        });
+    </script>
+}
