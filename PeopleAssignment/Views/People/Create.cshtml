@@ -1,0 +1,27 @@
+﻿@model CreatePersonViewModel
+
+@{
+    ViewData["Title"] = "Add new people";
+}
+
+<form method="post"
+      asp-controller="People"
+      asp-action="Create"
+      asp-antiforgery="true">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input type="text" class="form-control" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="City"></label>
+        <input type="text" class="form-control" asp-for="City">
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone"></label>
+        <input type="text" class="form-control" asp-for="Phone">
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

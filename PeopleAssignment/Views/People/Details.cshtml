@@ -1,0 +1,22 @@
+﻿@model Person
+
+@{ 
+    ViewData["Title"] = "Show details person";
+}
+
+<table class="table table-hover">
+    <tbody>
+    <tr>
+        <th scope="row" class="border-0">Name</th>
+        <td class="border-0">@Model.Name</td>
+    </tr>
+    <tr>
+        <th scope="row" class="border-0">City</th>
+        <td class="border-0">@Model.City</td>
+    </tr>
+    <tr>
+        <th scope="row" class="border-0">Phone</th>
+        <td class="border-0">@Model.Phone</td>
+    </tr>
+    </tbody>
+</table>
