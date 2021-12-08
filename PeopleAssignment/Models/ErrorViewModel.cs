@@ -1,5 +1,3 @@
-using System;
-
 namespace PeopleAssignment.Models
 {
     public class ErrorViewModel
