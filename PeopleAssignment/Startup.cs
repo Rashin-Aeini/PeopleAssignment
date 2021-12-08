@@ -29,6 +29,8 @@ namespace PeopleAssignment
 
             services.AddScoped<PeopleService>();
 
+            services.AddScoped<DatabasePeopleRepo>();
+
             services.AddControllersWithViews();
         }
 
