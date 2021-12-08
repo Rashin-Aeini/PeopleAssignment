@@ -21,30 +21,11 @@
 
 </div>
 
-<table class="table table-hover">
-    <thead class="thead-light">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">City</th>
-        <th scope="col">Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (PeopleViewModel item in Model)
-    {
-        <tr>
-            <th scope="row">@item.Id</th>
-            <td>@item.Name</td>
-            <td>@item.City</td>
-            <td>
-                <a asp-controller="People"
-                   asp-action="Details" asp-route-id="@item.Id">
-                    Details
-                </a>
-            </td>
-        </tr>
-    }
-
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (PeopleViewModel person in Model)
+        {
+            @Html.Partial("_PersonRender", person)
+        }
+    </div>
+</div>

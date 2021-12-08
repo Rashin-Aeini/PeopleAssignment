@@ -1,0 +1,14 @@
+﻿@model PeopleViewModel
+
+<div class="col-12 col-lg-6">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.City</h6>
+            <a class="card-link" asp-controller="People"
+               asp-action="Details" asp-route-id="@Model.Id">
+                Details
+            </a>
+        </div>
+    </div>
+</div>
