@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PeopleAssignment.Models.Data;
+using PeopleAssignment.Models.Repos;
+using PeopleAssignment.Models.Services;
 
 namespace PeopleAssignment
 {
@@ -22,6 +24,10 @@ namespace PeopleAssignment
         {
             services.AddDbContext<PeopleContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddScoped<InMemoryPeopleRepo>();
+
+            services.AddScoped<PeopleService>();
 
             services.AddControllersWithViews();
         }

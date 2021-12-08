@@ -8,9 +8,9 @@ namespace PeopleAssignment.Controllers
     {
         private IPeopleService Service { get; }
 
-        public AjaxController()
+        public AjaxController(PeopleService service)
         {
-            Service = new PeopleService();
+            Service = service;
         }
 
         public IActionResult Index()

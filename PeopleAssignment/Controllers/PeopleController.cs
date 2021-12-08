@@ -10,9 +10,9 @@ namespace PeopleAssignment.Controllers
     {
         private IPeopleService Service { get; }
 
-        public PeopleController()
+        public PeopleController(PeopleService service)
         {
-            Service = new PeopleService();
+            Service = service;
         }
         public IActionResult Index(string search)
         {

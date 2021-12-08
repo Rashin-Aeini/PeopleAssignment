@@ -8,9 +8,9 @@ namespace PeopleAssignment.Models.Services
     {
         private IPeopleRepo Repo { get; }
 
-        public PeopleService()
+        public PeopleService(InMemoryPeopleRepo repo)
         {
-            Repo = new InMemoryPeopleRepo();
+            Repo = repo;
         }
 
         public Person Add(CreatePersonViewModel person)
