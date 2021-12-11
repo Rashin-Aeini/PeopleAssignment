@@ -1,0 +1,54 @@
+﻿@model CountriesViewModel
+
+@{
+    ViewData["Title"] = "list of countries";
+}
+
+<a asp-controller="Country" asp-action="Create" class="btn btn-link mb-3">
+    Add new country
+</a>
+
+<table class="table table-hover text-center">
+    <thead>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (Country item in Model.Countries)
+    {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                <a asp-controller="Country" asp-action="Details"
+                   asp-route-id="@item.Id" class="btn btn-link text-info">
+                    Details
+                </a>
+
+                <a asp-controller="Country" asp-action="Edit"
+                   asp-route-id="@item.Id" class="btn btn-link text-warning">
+                    Edit
+                </a>
+
+                <a asp-controller="Country" asp-action="Delete"
+                   asp-route-id="@item.Id" class="btn btn-link text-danger">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

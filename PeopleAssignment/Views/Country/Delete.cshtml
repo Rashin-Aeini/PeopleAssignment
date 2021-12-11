@@ -1,0 +1,15 @@
+﻿@model Country
+
+<p>Are you sure about deleting @Model.Name?</p>
+
+<form method="post"
+      asp-controller="Country"
+      asp-action="Delete"
+      asp-route-id="@Model.Id"
+      asp-antiforgery="true">
+    <div class="d-flex flex-row">
+        <button type="submit" class="btn btn-danger">Yes</button>
+        <a asp-controller="Country" asp-action="Index" class="btn btn-success">No</a>
+    </div>
+    
+</form>
