@@ -8,7 +8,7 @@ namespace PeopleAssignment.Controllers
     {
         private IPeopleService Service { get; }
 
-        public AjaxController(PeopleService service)
+        public AjaxController(IPeopleService service)
         {
             Service = service;
         }

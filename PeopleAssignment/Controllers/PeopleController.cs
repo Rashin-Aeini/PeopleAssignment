@@ -10,7 +10,7 @@ namespace PeopleAssignment.Controllers
     {
         private IPeopleService Service { get; }
 
-        public PeopleController(PeopleService service)
+        public PeopleController(IPeopleService service)
         {
             Service = service;
         }
@@ -21,7 +21,7 @@ namespace PeopleAssignment.Controllers
                 Service.All();
 
             List<PeopleViewModel> model = new List<PeopleViewModel>();
-
+            /*
             foreach (Person item in people)
             {
                 model.Add(new PeopleViewModel()
@@ -31,6 +31,7 @@ namespace PeopleAssignment.Controllers
                     City = item.City
                 });
             }
+            */
 
             return View(model);
         }
