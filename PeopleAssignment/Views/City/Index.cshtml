@@ -1,0 +1,64 @@
+﻿@model CitiesViewModel
+
+<a asp-area="" asp-controller="City"
+   asp-action="Create" class="btn btn-link">
+    <i class="fas fa-plus mr-1"></i>
+    Add new city
+</a>
+
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (City item in Model.Result)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Country.Name
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="City"
+                       asp-action="Details" asp-route-id="@item.Id"
+                       class="btn btn-link text-info">
+                        <i class="fas fa-eye mr-1"></i>
+                        Details
+                    </a>
+
+                    <a asp-area="" asp-controller="City"
+                       asp-action="Edit" asp-route-id="@item.Id"
+                       class="btn btn-link text-warning">
+                        <i class="fas fa-edit mr-1"></i>
+                        Edit
+                    </a>
+
+                    <a asp-area="" asp-controller="City"
+                       asp-action="Delete" asp-route-id="@item.Id"
+                       class="btn btn-link text-danger">
+                        <i class="fas fa-trash mr-1"></i>
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

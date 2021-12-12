@@ -35,6 +35,10 @@ namespace PeopleAssignment
 
             services.AddScoped<ICountryService, CountryService>();
 
+            services.AddScoped<ICityRepo, DatabaseCityRepo>();
+
+            services.AddScoped<ICityService, CityService>();
+
             services.AddControllersWithViews();
         }
 

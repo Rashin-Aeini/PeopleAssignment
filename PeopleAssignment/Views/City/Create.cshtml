@@ -1,0 +1,26 @@
+﻿@model CreateCityViewModel
+
+@{
+    ViewData["Title"] = "Add new city";
+}
+
+<form method="post"
+      asp-controller="City"
+      asp-action="Create"
+      asp-antiforgery="true">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input type="text" class="form-control" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CountryId"></label>
+        <select asp-for="CountryId" class="form-control">
+            @foreach (Country item in Model.Countries)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
