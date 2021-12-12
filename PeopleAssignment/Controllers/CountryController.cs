@@ -14,11 +14,11 @@ namespace PeopleAssignment.Controllers
             Service = service;
         }
 
-        public IActionResult Index(CountriesViewModel model)
+        public IActionResult Index(CountriesViewModel entry)
         {
-            model.Countries.AddRange(Service.All());
+            entry.Countries.AddRange(Service.All());
 
-            return View(model);
+            return View(entry);
         }
 
         public IActionResult Create()
@@ -42,13 +42,13 @@ namespace PeopleAssignment.Controllers
 
         public IActionResult Details(int id)
         {
-            Country model = Service.FindById(id);
-            if (model == null)
+            Country entry = Service.FindById(id);
+            if (entry == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Index));
             }
 
-            return View(model);
+            return View(entry);
         }
 
         public IActionResult Edit(int id)
