@@ -9,31 +9,22 @@ namespace PeopleAssignment.Controllers
     public class PeopleController : Controller
     {
         private IPeopleService Service { get; }
+        private ICityService CityService { get; }
 
-        public PeopleController(IPeopleService service)
+        public PeopleController(IPeopleService service, ICityService cityService)
         {
             Service = service;
+            CityService = cityService;
         }
-        public IActionResult Index(string search)
+        public IActionResult Index(PeopleViewModel entry)
         {
-            List<Person> people = !string.IsNullOrEmpty(search) ?
-                Service.Search(search) :
+            List<Person> people = !string.IsNullOrEmpty(entry.Search) ?
+                Service.Search(entry.Search) :
                 Service.All();
 
-            List<PeopleViewModel> model = new List<PeopleViewModel>();
-            /*
-            foreach (Person item in people)
-            {
-                model.Add(new PeopleViewModel()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    City = item.City
-                });
-            }
-            */
+            entry.Result.AddRange(people);
 
-            return View(model);
+            return View(entry);
         }
 
         public IActionResult Details(int id)
@@ -50,7 +41,12 @@ namespace PeopleAssignment.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            CreatePersonViewModel entry = new CreatePersonViewModel()
+            {
+                Cities = CityService.All()
+            };
+
+            return View(entry);
         }
 
         [ValidateAntiForgeryToken]
@@ -59,6 +55,7 @@ namespace PeopleAssignment.Controllers
         {
             if (!ModelState.IsValid)
             {
+                entry.Cities = CityService.All();
                 return View(entry);
             }
 

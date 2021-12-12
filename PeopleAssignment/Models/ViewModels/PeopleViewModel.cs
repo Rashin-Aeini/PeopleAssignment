@@ -1,9 +1,15 @@
-﻿namespace PeopleAssignment.Models.ViewModels
+﻿using System.Collections.Generic;
+
+namespace PeopleAssignment.Models.ViewModels
 {
     public class PeopleViewModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string City { get; set; }
+        public PeopleViewModel()
+        {
+            Result = new List<Person>();
+        }
+
+        public string Search { get; set; }
+        public List<Person> Result { get; }
     }
 }

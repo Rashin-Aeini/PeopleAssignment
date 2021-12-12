@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PeopleAssignment.Models.Data;
 
 namespace PeopleAssignment.Models.Repos
@@ -15,7 +16,10 @@ namespace PeopleAssignment.Models.Repos
 
         public List<Person> Read()
         {
-            return Context.Persons.ToList();
+            return Context.Persons
+                .Include(item => item.City)
+                .ThenInclude(item => item.Country)
+                .ToList();
         }
 
         public Person Read(int id)

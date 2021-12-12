@@ -25,11 +25,9 @@ namespace PeopleAssignment
             services.AddDbContext<PeopleContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
-            services.AddScoped<IPeopleRepo, InMemoryPeopleRepo>();
+            services.AddScoped<IPeopleRepo, DatabasePeopleRepo>();
 
             services.AddScoped<IPeopleService, PeopleService>();
-
-            services.AddScoped<DatabasePeopleRepo>();
 
             services.AddScoped<ICountryRepo, DatabaseCountryRepo>();
 

@@ -8,19 +8,20 @@ namespace PeopleAssignment.Models.Services
     {
         private IPeopleRepo Repo { get; }
 
-        public PeopleService(InMemoryPeopleRepo repo)
+        public PeopleService(IPeopleRepo repo)
         {
             Repo = repo;
         }
 
         public Person Add(CreatePersonViewModel person)
         {
-            return Repo.Create(new Person()
+            Person entry = new Person()
             {
                 Name = person.Name,
-                City = person.City,
+                CityId = person.CityId,
                 Phone = person.Phone
-            });
+            };
+            return Repo.Create(entry);
         }
 
         public List<Person> All()
@@ -35,13 +36,15 @@ namespace PeopleAssignment.Models.Services
 
         public bool Edit(int id, CreatePersonViewModel person)
         {
-            return Repo.Update(new Person()
+            Person entry = new Person()
             {
                 Id = id,
                 Name = person.Name,
-                City = person.City,
+                CityId = person.CityId,
                 Phone = person.Phone
-            });
+            };
+
+            return Repo.Update(entry);
         }
 
         public Person FindById(int id)
@@ -55,7 +58,7 @@ namespace PeopleAssignment.Models.Services
 
             foreach (Person item in All())
             {
-                if (item.Name.Contains(search) || item.City.Contains(search))
+                if (item.Name.Contains(search) || item.City.Name.Contains(search))
                 {
                     result.Add(item);
                 }

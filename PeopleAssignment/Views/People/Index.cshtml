@@ -1,4 +1,4 @@
-﻿@model List<PeopleViewModel>
+﻿@model PeopleViewModel
 
 @{
     ViewData["Title"] = "Show list of the people";
@@ -13,8 +13,8 @@
     </a>
 
     <form class="form-inline ml-auto">
-        <label class="ml-auto" for="search">Search</label>
-        <input type="text" class="form-control mb-2 mx-sm-2" id="search" name="search">
+        <label class="ml-auto" asp-for="Search"></label>
+        <input type="text" class="form-control mb-2 mx-sm-2" asp-for="Search">
 
         <button type="submit" class="btn btn-primary mb-2">Submit</button>
     </form>
@@ -23,9 +23,9 @@
 
 <div class="container-fluid">
     <div class="row">
-        @foreach (PeopleViewModel person in Model)
+        @foreach (Person item in Model.Result)
         {
-            @Html.Partial("_PersonRender", person)
+            @Html.Partial("_PersonRender", item)
         }
     </div>
 </div>

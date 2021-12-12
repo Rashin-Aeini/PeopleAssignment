@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace PeopleAssignment.Models.Data
@@ -9,18 +10,34 @@ namespace PeopleAssignment.Models.Data
         {
             context.Database.Migrate();
 
-            if (!context.Persons.Any())
+            if (!context.Countries.Any())
             {
-                Person aieni = new Person()
+                Country sweden = new Country()
+                {
+                    Name = "Sweden",
+                    Cities = new List<City>()
+                };
+
+                City gothenburg = new City()
+                {
+                    Name = "Gothenburg",
+                    People = new List<Person>()
+                };
+
+                Person aeini = new Person()
                 {
                     Name = "Rashin Aeini",
-                    City = "Vaxjo",
                     Phone = "123456789"
                 };
 
-                context.Persons.Add(aieni);
+                gothenburg.People.Add(aeini);
+
+                sweden.Cities.Add(gothenburg);
+
+                context.Countries.Add(sweden);
 
                 context.SaveChanges();
+
             }
         }
     }
