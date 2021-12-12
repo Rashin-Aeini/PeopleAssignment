@@ -16,7 +16,7 @@ namespace PeopleAssignment.Controllers
 
         public IActionResult Index(CountriesViewModel entry)
         {
-            entry.Countries.AddRange(Service.All());
+            entry.Result.AddRange(Service.All());
 
             return View(entry);
         }
@@ -82,6 +82,8 @@ namespace PeopleAssignment.Controllers
                 }
                 ModelState.AddModelError("NotSave", "Unable to save changes");
             }
+
+            ViewBag.Id = id;
             
             return View(entry);
         }

@@ -6,10 +6,10 @@ namespace PeopleAssignment.Models.ViewModels
     {
         public CountriesViewModel()
         {
-            Countries = new List<Country>();
+            Result = new List<Country>();
         }
 
         public string Search { get; set; }
-        public List<Country> Countries { get; }
+        public List<Country> Result { get; }
     }
 }
