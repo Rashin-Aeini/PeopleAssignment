@@ -1,0 +1,18 @@
+﻿@model CreateLanguageViewModel
+
+@{
+    ViewData["Title"] = "Edit a language";
+}
+
+<form method="post"
+      asp-controller="Language"
+      asp-action="Edit"
+      asp-route-id="@ViewBag.Id"
+      asp-antiforgery="true">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input type="text" class="form-control" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PeopleAssignment.Models
@@ -14,5 +15,7 @@ namespace PeopleAssignment.Models
         public City City { get; set; }
         [Required]
         public string Phone { get; set; }
+
+        public ICollection<PersonLanguage> Languages { get; set; }
     }
 }

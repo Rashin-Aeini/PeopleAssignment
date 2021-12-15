@@ -12,5 +12,7 @@ namespace PeopleAssignment.Models.Data
         public DbSet<Person> Persons { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<PersonLanguage> PersonLanguages { get; set; }
     }
 }
