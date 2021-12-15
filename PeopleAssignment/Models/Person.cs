@@ -16,6 +16,6 @@ namespace PeopleAssignment.Models
         [Required]
         public string Phone { get; set; }
 
-        public ICollection<PersonLanguage> Languages { get; set; }
+        public List<PersonLanguage> Languages { get; set; }
     }
 }

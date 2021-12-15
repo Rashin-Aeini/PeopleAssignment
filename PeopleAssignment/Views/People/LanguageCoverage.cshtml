@@ -1,0 +1,54 @@
+﻿@model LanguageCoverageViewModel
+
+@{
+    ViewData["Title"] = "";
+}
+
+<h3>Language Coverage for: @Model.Person.Name</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h5>Current languages cover</h5>
+            <table class="table table-hover">
+                <tbody>
+                    @foreach (Language item in Model.Current)
+                    {
+                        <tr>
+                            <th scope="row" class="border-0">Name</th>
+                            <td class="border-0">@item.Name</td>
+                            <td class="border-0">
+                                <a class="btn btn-link text-danger"
+                                   asp-controller="People" asp-action="RemoveLanguage"
+                                   asp-route-person="@Model.Person.Id" asp-route-language="@item.Id">
+                                    Remove
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h5>Add language</h5>
+            <table class="table table-hover">
+                <tbody>
+                    @foreach (Language item in Model.Possible)
+                    {
+                        <tr>
+                            <th scope="row" class="border-0">Name</th>
+                            <td class="border-0">@item.Name</td>
+                            <td class="border-0">
+                                <a class="btn btn-link text-success"
+                                   asp-controller="People" asp-action="AddLanguage"
+                                   asp-route-person="@Model.Person.Id" asp-route-language="@item.Id">
+                                    Add
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

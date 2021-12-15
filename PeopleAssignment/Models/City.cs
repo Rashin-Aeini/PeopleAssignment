@@ -13,6 +13,6 @@ namespace PeopleAssignment.Models
         [ForeignKey("Country")]
         public int CountryId { get; set; }
         public Country Country { get; set; }
-        public ICollection<Person> People { get; set; }
+        public List<Person> People { get; set; }
     }
 }

@@ -62,5 +62,30 @@ namespace PeopleAssignment.Controllers
             Service.Add(entry);
             return RedirectToAction("Index");
         }
+
+        public IActionResult LanguageCoverage(int id)
+        {
+            LanguageCoverageViewModel entry = Service.LanguageCoverage(id);
+
+            if (entry == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(entry);
+
+        }
+
+        public IActionResult AddLanguage(int person, int language)
+        {
+            Service.AddLanguage(person, language);
+            return RedirectToAction(nameof(LanguageCoverage), new { Id = person });
+        }
+
+        public IActionResult RemoveLanguage(int person, int language)
+        {
+            Service.RemoveLanguage(person, language);
+            return RedirectToAction(nameof(LanguageCoverage), new { Id = person });
+        }
     }
 }

@@ -19,6 +19,8 @@ namespace PeopleAssignment.Models.Repos
             return Context.Persons
                 .Include(item => item.City)
                 .ThenInclude(item => item.Country)
+                .Include(item => item.Languages)
+                .ThenInclude(item => item.Language)
                 .ToList();
         }
 

@@ -9,6 +9,6 @@ namespace PeopleAssignment.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public ICollection<PersonLanguage> People { get; set; }
+        public List<PersonLanguage> People { get; set; }
     }
 }
