@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace PeopleAssignment.Models.Data
 {
-    public class PeopleContext : DbContext
+    public class PeopleContext : IdentityDbContext<User>
     {
         public PeopleContext(DbContextOptions<PeopleContext> options) : base(options)
         {

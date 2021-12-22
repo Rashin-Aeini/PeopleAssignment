@@ -1,8 +1,11 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PeopleAssignment.Models;
 using PeopleAssignment.Models.Data;
 
 namespace PeopleAssignment
@@ -34,7 +37,11 @@ namespace PeopleAssignment
                 try
                 {
                     var context = services.GetRequiredService<PeopleContext>();
-                    DbInitializer.Initialize(context);
+                    UserManager<User> manager = services
+                        .GetRequiredService<UserManager<User>>();
+
+                    DbInitializer.Initialize(context, manager);
+
                 }
                 catch (Exception ex)
                 {

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PeopleAssignment.Models;
 using PeopleAssignment.Models.Services;
 using PeopleAssignment.Models.ViewModels;
 
 namespace PeopleAssignment.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CountryController : Controller
     {
         private ICountryService Service { get; }

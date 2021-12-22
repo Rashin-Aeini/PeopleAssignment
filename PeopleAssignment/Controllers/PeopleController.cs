@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PeopleAssignment.Models;
 using PeopleAssignment.Models.Services;
@@ -6,6 +7,7 @@ using PeopleAssignment.Models.ViewModels;
 
 namespace PeopleAssignment.Controllers
 {
+    [Authorize(Roles = "visitor, admin")]
     public class PeopleController : Controller
     {
         private IPeopleService Service { get; }

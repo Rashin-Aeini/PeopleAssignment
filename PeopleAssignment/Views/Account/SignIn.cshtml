@@ -1,0 +1,29 @@
+﻿@model SignInViewModel
+
+@{
+    ViewData["Title"] = "Sign in";
+}
+
+<form method="post"
+      asp-controller="Account"
+      asp-action="SignIn"
+      asp-route-returnUrl="@ViewBag.ReturnUrl"
+      asp-antiforgery="true">
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input type="text" class="form-control" asp-for="Username">
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input type="text" class="form-control" asp-for="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" asp-for="RememberMe">
+            <label class="custom-control-label" asp-for="RememberMe"></label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
